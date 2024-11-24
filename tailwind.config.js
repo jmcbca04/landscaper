@@ -10,8 +10,31 @@ module.exports = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary: "#2D4B3D",     // Dark green
+        secondary: "#E6EFE9",   // Light sage
+        accent: "#BB9A3C",      // Gold accent
+        neutral: "#F5F5F5",     // Light gray
+        "base-100": "#FFFFFF",  // White
+      },
+      fontFamily: {
+        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-serif)', 'Georgia', 'serif'],
       },
     },
   },
-  plugins: [],
-};
+  plugins: [require("daisyui")],
+  daisyui: {
+    themes: [
+      {
+        light: {
+          ...require("daisyui/src/theming/themes")["light"],
+          primary: "#2D4B3D",
+          secondary: "#E6EFE9",
+          accent: "#BB9A3C",
+          neutral: "#F5F5F5",
+          "base-100": "#FFFFFF",
+        },
+      },
+    ],
+  },
+}
