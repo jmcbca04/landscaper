@@ -49,7 +49,7 @@ export default function Testimonials() {
             <div className="bg-white rounded-lg shadow-lg p-8 md:p-12">
               <div className="flex flex-col items-center text-center">
                 <blockquote className="text-lg md:text-xl text-gray-600 mb-6">
-                  "{testimonials[activeIndex].content}"
+                  &ldquo;{testimonials[activeIndex].content}&rdquo;
                 </blockquote>
                 <cite className="not-italic">
                   <p className="font-medium text-primary text-lg">

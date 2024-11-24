@@ -50,7 +50,7 @@ export default function Footer() {
               GreenScape
             </Link>
             <p className="text-sm text-gray-600 max-w-xs">
-              Transform your outdoor space into a stunning landscape that reflects your style and enhances your property's value.
+              Transform your outdoor space into a stunning landscape that reflects your style and enhances your property&apos;s value.
             </p>
           </div>
 
