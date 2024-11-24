@@ -11,7 +11,7 @@ export default function CTA() {
             Ready to Transform Your Outdoor Space?
           </h2>
           <p className="text-lg md:text-xl mb-8 text-white/90">
-            Contact us today for a free consultation and let's bring your landscaping vision to life.
+            Contact us today for a free consultation and let&apos;s bring your landscaping vision to life.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href="#contact" className="btn btn-lg bg-white text-primary hover:bg-white/90">
