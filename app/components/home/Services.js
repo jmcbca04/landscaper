@@ -7,19 +7,19 @@ const services = [
   {
     title: 'Landscape Design',
     description: 'Custom designs that blend beauty with functionality, creating outdoor spaces that reflect your style.',
-    image: '/service-design.jpg',
+    image: '/images/service-design.jpg',
     href: '#services'
   },
   {
     title: 'Garden Maintenance',
     description: 'Regular maintenance services to keep your garden looking beautiful throughout the year.',
-    image: '/service-maintenance.jpg',
+    image: '/images/service-maintenance.jpg',
     href: '#services'
   },
   {
     title: 'Hardscaping',
     description: 'Create stunning patios, walkways, and retaining walls that enhance your outdoor living space.',
-    image: '/service-hardscape.jpg',
+    image: '/images/service-hardscape.jpg',
     href: '#services'
   }
 ]
@@ -52,20 +52,9 @@ export default function Services() {
               <div className="card-body">
                 <h3 className="card-title text-xl">{service.title}</h3>
                 <p className="text-gray-600">{service.description}</p>
-                <div className="card-actions justify-end mt-4">
-                  <Link href={service.href} className="btn btn-primary">
-                    Learn More
-                  </Link>
-                </div>
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <Link href="#services" className="btn btn-outline btn-primary btn-lg">
-            View All Services
-          </Link>
         </div>
       </div>
     </section>

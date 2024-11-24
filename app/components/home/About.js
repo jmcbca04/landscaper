@@ -10,7 +10,7 @@ export default function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="relative h-[500px] rounded-lg overflow-hidden">
             <Image
-              src="/about-image.jpg"
+              src="/images/about-team.jpg"
               alt="Our landscaping team at work"
               fill
               className="object-cover"
@@ -46,11 +46,6 @@ export default function About() {
                 <h3 className="text-2xl font-serif text-primary mb-2">24/7</h3>
                 <p className="text-gray-600">Customer Support</p>
               </div>
-            </div>
-            <div className="mt-8">
-              <Link href="#contact" className="btn btn-primary">
-                Get in Touch
-              </Link>
             </div>
           </div>
         </div>
