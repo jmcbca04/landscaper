@@ -1,26 +1,22 @@
 'use client'
 
-import Image from 'next/image'
 import { useState } from 'react'
 
 const testimonials = [
   {
     content: "GreenScape transformed our backyard into an amazing outdoor living space. Their attention to detail and professional service exceeded our expectations.",
     author: "Sarah Johnson",
-    role: "Homeowner",
-    image: "/testimonial-1.jpg"
+    role: "Homeowner"
   },
   {
     content: "The team's creativity and expertise helped us create a sustainable, low-maintenance garden that we enjoy year-round. Highly recommended!",
     author: "Michael Chen",
-    role: "Property Manager",
-    image: "/testimonial-2.jpg"
+    role: "Property Manager"
   },
   {
     content: "Outstanding service from start to finish. They listened to our ideas and delivered a beautiful landscape that perfectly matches our vision.",
     author: "Emily Rodriguez",
-    role: "Homeowner",
-    image: "/testimonial-3.jpg"
+    role: "Homeowner"
   }
 ]
 
@@ -52,19 +48,11 @@ export default function Testimonials() {
             {/* Testimonial Card */}
             <div className="bg-white rounded-lg shadow-lg p-8 md:p-12">
               <div className="flex flex-col items-center text-center">
-                <div className="relative w-20 h-20 mb-6">
-                  <Image
-                    src={testimonials[activeIndex].image}
-                    alt={testimonials[activeIndex].author}
-                    fill
-                    className="rounded-full object-cover"
-                  />
-                </div>
                 <blockquote className="text-lg md:text-xl text-gray-600 mb-6">
                   "{testimonials[activeIndex].content}"
                 </blockquote>
                 <cite className="not-italic">
-                  <p className="font-medium text-primary">
+                  <p className="font-medium text-primary text-lg">
                     {testimonials[activeIndex].author}
                   </p>
                   <p className="text-sm text-gray-500">

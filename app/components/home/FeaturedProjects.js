@@ -7,13 +7,13 @@ const projects = [
   {
     title: 'Modern Backyard Oasis',
     description: 'A complete transformation featuring a custom pool, outdoor kitchen, and sustainable landscaping.',
-    image: '/project-1.jpg',
+    image: '/images/project-modern.jpg',
     href: '#projects'
   },
   {
     title: 'Zen Garden Retreat',
     description: 'A peaceful garden sanctuary with water features, native plants, and meditation spaces.',
-    image: '/project-2.jpg',
+    image: '/images/project-zen.jpg',
     href: '#projects'
   }
 ]
@@ -45,14 +45,8 @@ export default function FeaturedProjects() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                <h3 className="text-2xl font-serif mb-2">{project.title}</h3>
+                <h3 className="text-2xl font-serif text-white mb-2">{project.title}</h3>
                 <p className="mb-4 text-white/90">{project.description}</p>
-                <Link
-                  href={project.href}
-                  className="btn btn-primary"
-                >
-                  View Project
-                </Link>
               </div>
             </div>
           ))}
