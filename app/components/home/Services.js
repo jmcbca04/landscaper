@@ -1,62 +1,64 @@
-'use client'
+import { getServices } from '../../lib/sanity'
+import ServicesClient from './ServicesClient'
 
-import Image from 'next/image'
-import Link from 'next/link'
+// Fallback content
+const fallbackContent = {
+  title: "Our Services",
+  description: "We offer comprehensive landscaping services to transform and maintain your outdoor spaces.",
+  services: [
+    {
+      title: 'Landscape Design',
+      description: 'Custom designs that blend beauty with functionality, creating outdoor spaces that reflect your style.',
+      image: '/images/service-design.jpg',
+      href: '#services'
+    },
+    {
+      title: 'Garden Maintenance',
+      description: 'Regular maintenance services to keep your garden looking beautiful throughout the year.',
+      image: '/images/service-maintenance.jpg',
+      href: '#services'
+    },
+    {
+      title: 'Hardscaping',
+      description: 'Create stunning patios, walkways, and retaining walls that enhance your outdoor living space.',
+      image: '/images/service-hardscape.jpg',
+      href: '#services'
+    }
+  ]
+}
 
-const services = [
-  {
-    title: 'Landscape Design',
-    description: 'Custom designs that blend beauty with functionality, creating outdoor spaces that reflect your style.',
-    image: '/images/service-design.jpg',
-    href: '#services'
-  },
-  {
-    title: 'Garden Maintenance',
-    description: 'Regular maintenance services to keep your garden looking beautiful throughout the year.',
-    image: '/images/service-maintenance.jpg',
-    href: '#services'
-  },
-  {
-    title: 'Hardscaping',
-    description: 'Create stunning patios, walkways, and retaining walls that enhance your outdoor living space.',
-    image: '/images/service-hardscape.jpg',
-    href: '#services'
+export default async function Services() {
+  try {
+    const sanityData = await getServices()
+    
+    if (!sanityData) {
+      return (
+        <ServicesClient 
+          services={fallbackContent.services}
+          title={fallbackContent.title}
+          description={fallbackContent.description}
+          isStaticContent={true} 
+        />
+      )
+    }
+
+    return (
+      <ServicesClient 
+        services={sanityData.services}
+        title={sanityData.metadata?.title || fallbackContent.title}
+        description={sanityData.metadata?.description || fallbackContent.description}
+        isStaticContent={false} 
+      />
+    )
+  } catch (error) {
+    console.error('Error fetching services:', error)
+    return (
+      <ServicesClient 
+        services={fallbackContent.services}
+        title={fallbackContent.title}
+        description={fallbackContent.description}
+        isStaticContent={true} 
+      />
+    )
   }
-]
-
-export default function Services() {
-  return (
-    <section id="services" className="section bg-secondary/30">
-      <div className="container">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="section-title">Our Services</h2>
-          <p className="text-gray-600">
-            We offer comprehensive landscaping services to transform and maintain your outdoor spaces.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service) => (
-            <div
-              key={service.title}
-              className="card bg-base-100 shadow-lg hover:shadow-xl transition-shadow"
-            >
-              <figure className="relative h-48">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover"
-                />
-              </figure>
-              <div className="card-body">
-                <h3 className="card-title text-xl">{service.title}</h3>
-                <p className="text-gray-600">{service.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  )
 } 
