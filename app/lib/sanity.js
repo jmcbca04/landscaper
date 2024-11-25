@@ -1,13 +1,21 @@
 import { createClient } from 'next-sanity'
 
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
+const dataset = process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'
+
+if (!projectId) {
+  console.error('Sanity Project ID is not set in environment variables')
+}
+
 export const client = createClient({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  projectId: projectId || '',  // Fallback to empty string to prevent build errors
+  dataset,
   apiVersion: '2024-01-01',
   useCdn: false,
 })
 
 export async function getAbout() {
+  if (!projectId) return null
   return client.fetch(`*[_type == "about"][0]{
     mainImage,
     title,
@@ -20,6 +28,7 @@ export async function getAbout() {
 }
 
 export async function getHero() {
+  if (!projectId) return null
   return client.fetch(`*[_type == "hero"][0]{
     backgroundImage,
     heading,
@@ -36,6 +45,8 @@ export async function getHero() {
 }
 
 export async function getServices() {
+  if (!projectId) return null
+  
   try {
     const query = `{
       "metadata": *[_type == "servicesSection"][0]{
