@@ -34,3 +34,30 @@ export async function getHero() {
     }
   }`)
 }
+
+export async function getServices() {
+  try {
+    const query = `{
+      "metadata": *[_type == "servicesSection"][0]{
+        title,
+        description
+      },
+      "services": *[_type == "service" && isHighlighted == true] | order(order asc) {
+        title,
+        description,
+        mainImage,
+        slug,
+        order
+      }
+    }`
+    
+    const result = await client.fetch(query)
+    if (!result.services || result.services.length === 0) {
+      return null
+    }
+    return result
+  } catch (error) {
+    console.error('Error fetching services:', error)
+    return null
+  }
+}
